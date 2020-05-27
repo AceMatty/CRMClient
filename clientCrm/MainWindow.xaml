@@ -1,0 +1,22 @@
+﻿<Window x:Class="clientCrm.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:clientCrm"
+        mc:Ignorable="d"
+        Title="Вход в систему" Height="450" Width="500" Background="#FF402E61" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+
+        <Button x:Name="btnLogin" Content="Вход" HorizontalAlignment="Left" Margin="10,329,0,0" VerticalAlignment="Top" Width="158" Height="34" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Click="btnLogin_Click"/>
+        <TextBox x:Name="txtLogin" HorizontalAlignment="Left" Height="34" Margin="10,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="246" Background="#FF9F93E0" Foreground="White" FontSize="20" FontFamily="Segoe UI Light" BorderBrush="#FF78767C" Grid.ColumnSpan="2"/>
+        <Label Content="Вход в систему" HorizontalAlignment="Center" Margin="10,19,12,298" VerticalAlignment="Center" Foreground="#FFECF4F5" Background="#00A3BFC5" Height="104" Width="472" FontSize="55" FontFamily="Segoe UI Light" Grid.ColumnSpan="2"/>
+        <Label Content="Логин" HorizontalAlignment="Left" Margin="14,128,0,0" VerticalAlignment="Top" Height="38" Width="242" Grid.ColumnSpan="2" FontSize="23" FontFamily="Segoe UI Light" Background="#00000000" Foreground="Snow"/>
+        <PasswordBox x:Name="txtPass" HorizontalAlignment="Left" Margin="10,259,0,0" VerticalAlignment="Top" Width="246
+" Height="34" Grid.ColumnSpan="2" Background="#FF9F93E0" Foreground="White" FontFamily="Segoe UI Light" FontSize="20"/>
+        <Label Content="Пароль" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Height="38" Width="242" Grid.ColumnSpan="2" FontSize="23" FontFamily="Segoe UI Light" Background="#00000000" Foreground="Snow"/>
+        <Label x:Name="lbStatus" Content="Ver 18.05" HorizontalAlignment="Left" Margin="346,385,0,0" VerticalAlignment="Top" Width="136"/>
+        <Button x:Name="btnReg" Content="Регистрация" HorizontalAlignment="Left" Margin="326,329,0,0" VerticalAlignment="Top" Width="158" Height="34" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Click="btnReg_Click_1"/>
+
+    </Grid>
+</Window>

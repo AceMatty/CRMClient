@@ -6,10 +6,6 @@
              xmlns:local="clr-namespace:clientCrm"
              mc:Ignorable="d" Width="250" Height="83.667" Loaded="UserControl_Loaded">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="130*"/>
-            <ColumnDefinition Width="121*"/>
-        </Grid.ColumnDefinitions>
         <Border BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="84" VerticalAlignment="Top" Width="250" Grid.ColumnSpan="2"/>
         <Button x:Name="btn" Content="Button" Margin="0,14,10,18" Click="btn_Click" RenderTransformOrigin="0.753,1.288" HorizontalAlignment="Right" Width="50" Grid.Column="1">
             <Button.Template>
@@ -22,7 +18,7 @@
             </Button.Template>
         </Button>
         <Label x:Name="lbPr" Content="Высокий приоритет" HorizontalAlignment="Left" Margin="0,58,0,0" VerticalAlignment="Top" Width="128" Foreground="#FFFF4545" FontFamily="Segoe UI Light" HorizontalContentAlignment="Center"/>
-        <TextBlock x:Name="lbName" HorizontalAlignment="Left" Height="62" Margin="10,4,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="175" Foreground="White" FontFamily="Segoe UI Light" FontSize="16" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="lbName" HorizontalAlignment="Left" Height="62" Margin="10,4,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="175" Foreground="White" FontFamily="Segoe UI Light" FontSize="17" Grid.ColumnSpan="2"/>
 
 
     </Grid>

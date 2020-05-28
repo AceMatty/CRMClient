@@ -19,29 +19,26 @@ namespace clientCrm
     /// </summary>
     public partial class AdminsForm : Window
     {
-        public User auth_user;
-        public AdminsForm(User u)
+        public AdminsForm()
         {
-            auth_user = u;
             InitializeComponent();
         }
 
         private void btnOpenJurn_Click(object sender, RoutedEventArgs e)
         {
-            frm1.Content = new JurnPage(auth_user);
+            frm1.Content = new JurnPage();
             
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            MainFunc.mainForm = this;
-            frm1.Content = new MainAdminPage(auth_user);
-            lbUserInfo.Content = "Вы вошли как:" + auth_user.login;
+            frm1.Content = new MainAdminPage();
+            lbUserInfo.Content = "Вы вошли как:" + MainFunc.auth_user.login;
         }
 
         private void btnOpenMain_Click(object sender, RoutedEventArgs e)
         {
-            frm1.Content = new MainAdminPage(auth_user);
+            frm1.Content = new MainAdminPage();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
@@ -53,7 +50,7 @@ namespace clientCrm
 
         private void btnOpenUsers_Click(object sender, RoutedEventArgs e)
         {
-            frm1.Content = new UserListPage(auth_user); 
+            frm1.Content = new UserListPage(); 
         }
 
         private void btnOpenTasks_Click(object sender, RoutedEventArgs e)

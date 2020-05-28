@@ -20,16 +20,14 @@ namespace clientCrm
     /// </summary>
     public partial class MainAdminPage : Page
     {
-        User user;
-        public MainAdminPage(User u)
+        public MainAdminPage()
         {
-            user = u;
             InitializeComponent();
         }
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            string name = user.fio.Substring(user.fio.IndexOf(' '));
+            string name = MainFunc.auth_user.fio.Substring(MainFunc.auth_user.fio.IndexOf(' '));
             lb1.Text = "Добро пожаловать, " + name + "! \n" + "Сегодня " + DateTime.Now.ToString("dddd, d MMMM yyyy г.", CultureInfo.GetCultureInfo("ru-ru"));
         }
     }

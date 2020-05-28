@@ -21,10 +21,8 @@ namespace clientCrm
     /// </summary>
     public partial class UserListPage : Page
     {
-        User auth_user;
-        public UserListPage(User u)
+        public UserListPage()
         {
-            auth_user = u;
             InitializeComponent();
         }
         public static List<User> UsersList;
@@ -46,9 +44,8 @@ namespace clientCrm
                             usType = "обычный пользователь";
                         if (item.perms == 1)
                             usType = "администратор";
-                        usList.Items.Add("ФИО: "+item.fio + "  \n Логин: " + item.login+" \n Тип пользователя: "+usType);
+                        usList.Items.Add("ФИО: "+item.fio + "  \n Email: " + item.email+ "  \n Телефон: " + item.phone + " \n Тип пользователя: " +usType+"");
                     }
-                    
                 }
             }
         }
@@ -57,6 +54,7 @@ namespace clientCrm
             try
             {
                 await GetUserList();
+                usList.SelectedIndex = 0;
             }
             catch (Exception ex)
             {
@@ -74,7 +72,7 @@ namespace clientCrm
         private void btnCreateTask_Click(object sender, RoutedEventArgs e)
         {
             User us = UsersList[usList.SelectedIndex];
-            CreateTaskForm form = new CreateTaskForm(auth_user, us);
+            CreateTaskForm form = new CreateTaskForm(MainFunc.auth_user, us);
             form.ShowDialog();
         }
     }

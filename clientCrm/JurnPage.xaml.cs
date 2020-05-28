@@ -22,10 +22,9 @@ namespace clientCrm
     /// </summary>
     public partial class JurnPage : Page
     {
-        User auth_user;
-        public JurnPage(User u)
+   
+        public JurnPage()
         {
-            auth_user = u;
             InitializeComponent();
         }
         List<LogItem> log = new List<LogItem>();
@@ -89,7 +88,7 @@ namespace clientCrm
         {
             using (HttpClient client = new HttpClient())
             {
-                string responce = await client.GetStringAsync(MainFunc.ip + "/clear_log?user_id="+auth_user.id);
+                string responce = await client.GetStringAsync(MainFunc.ip + "/clear_log?user_id="+MainFunc.auth_user.id);
                 //MessageBox.Show(responce);
                 await GetLog();
 

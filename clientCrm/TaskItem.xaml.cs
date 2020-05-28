@@ -24,7 +24,6 @@ namespace clientCrm
         public int TaskId;
         public int TaskPr;
         public int TaskSt;
-
         public TaskItem(int id,int pr, int st)
         {
             TaskId = id;
@@ -53,7 +52,7 @@ namespace clientCrm
             {
                 string responce = await client.GetStringAsync(MainFunc.ip + "/complete_task?id=" + TaskId);
                 MessageBox.Show(responce);
-                MainFunc.mainForm.UpdateLayout();
+                MainFunc.mainForm.frm1.Content = new UserTaskList();
 
 
             }

@@ -25,6 +25,16 @@
         <Label x:Name="lbWed" Content="Список задач на неделю" Margin="587,66,0,0" Foreground="#FFECF4F5" Background="#00A3BFC5" FontSize="20" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="265" Height="45" VerticalAlignment="Top"/>
         <Label x:Name="lbThurs" Content="Список задач на неделю" Margin="868,66,0,0" Foreground="#FFECF4F5" Background="#00A3BFC5" FontSize="20" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="265" Height="45" VerticalAlignment="Top"/>
         <Label x:Name="lbFrid" Content="Список задач на неделю" Margin="1149,66,0,0" Foreground="#FFECF4F5" Background="#00A3BFC5" FontSize="20" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="265" Height="45" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dtP" HorizontalAlignment="Left" Margin="142,0,0,93" RenderTransformOrigin="0.5,0.5" Height="24" VerticalAlignment="Bottom" SelectedDateChanged="dtP_SelectedDateChanged" SelectedDateFormat="Short" Width="116">
+            <DatePicker.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="3" ScaleY="3"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DatePicker.RenderTransform>
+        </DatePicker>
 
     </Grid>
 </Page>

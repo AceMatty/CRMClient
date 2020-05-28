@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -30,14 +31,14 @@ namespace clientCrm
         public int pr;
         public int status;
     }
-   
     public class LogItem
     {
         public string desc { get; set; }
     }
     public static class MainFunc
     {
-        public static Window mainForm;
+        public static User auth_user;
+        public static DefForm mainForm;
         public const string ip = "http://localhost:9000";//82.146.63.120
         public static User userMsgHandler(string responce)
         {
@@ -137,6 +138,18 @@ namespace clientCrm
                 return null;
             }
             return TasksList;
+        }
+        public static User FindUser(int ind, List<User> ls)
+        {
+            User u = new User();
+            foreach (User s in ls)
+            {
+                if(s.id == ind)
+                {
+                    u = s;
+                }
+            }
+            return u;
         }
     }
 }

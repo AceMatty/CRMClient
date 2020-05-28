@@ -25,7 +25,6 @@ namespace clientCrm
         {
             InitializeComponent();
         }
-        public User auth_user;
         HttpClient client = new HttpClient();
         private async void btnLogin_Click(object sender, RoutedEventArgs e)
         {
@@ -48,20 +47,20 @@ namespace clientCrm
         public async Task LoginRequest()
         {
             string responce = await client.GetStringAsync(MainFunc.ip + "/login?login=" + txtLogin.Text + "&password=" + txtPass.Password);
-            auth_user = MainFunc.userMsgHandler(responce);
-            if (auth_user.login != null)
+            MainFunc.auth_user = MainFunc.userMsgHandler(responce);
+            if (MainFunc.auth_user.login != null)
             {
                 //MessageBox.Show("Добро пожаловать, " + auth_user.fio);
                 this.Hide();
-                if (auth_user.perms == 1)
+                if (MainFunc.auth_user.perms == 1)
                 {
-                    AdminsForm form = new AdminsForm(auth_user);
+                    AdminsForm form = new AdminsForm();
                     form.Show();
                     Close();
                 }
                 else
                 {
-                    DefForm form = new DefForm(auth_user);
+                    DefForm form = new DefForm();
                     form.Show();
                     Close();
                 }

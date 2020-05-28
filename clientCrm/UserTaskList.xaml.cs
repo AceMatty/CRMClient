@@ -23,7 +23,6 @@ namespace clientCrm
 
     public partial class UserTaskList : Page
     {
-        User auth_user;
         string[] week = new string[5];
         public List<task> tasks = new List<task>();
         List<task> tasks1 = new List<task>();
@@ -31,15 +30,17 @@ namespace clientCrm
         List<task> tasks3 = new List<task>();
         List<task> tasks4 = new List<task>();
         List<task> tasks5 = new List<task>();
-        public UserTaskList(User u)
+        DateTime day;
+        public UserTaskList()
         {
-            auth_user = u;
             InitializeComponent();
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
+
+                day = DateTime.Now;
                 await GetTaskList();
             }
             catch(Exception ex)
@@ -77,23 +78,23 @@ namespace clientCrm
             {
                 if (item.status != 1)
                 {
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[0] + "." + DateTime.Now.Month + "." + DateTime.Now.Year))
+                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[0] + "." + day.Month + "." + day.Year))
                     {
                         tasks1.Add(item);
                     }
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[1] + "." + DateTime.Now.Month + "." + DateTime.Now.Year))
+                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[1] + "." + day.Month + "." + day.Year))
                     {
                         tasks2.Add(item);
                     }
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[2] + "." + DateTime.Now.Month + "." + DateTime.Now.Year))
+                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[2] + "." + day.Month + "." + day.Year))
                     {
                         tasks3.Add(item);
                     }
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[3] + "." + DateTime.Now.Month + "." + DateTime.Now.Year))
+                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[3] + "." + day.Month + "." + day.Year))
                     {
                         tasks4.Add(item);
                     }
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[4] + "." + DateTime.Now.Month + "." + DateTime.Now.Year))
+                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[4] + "." + day.Month + "." + day.Year))
                     {
                         tasks5.Add(item);
                     }
@@ -127,70 +128,83 @@ namespace clientCrm
             }
 
         }
+        void ClearLists()
+        {
+            lsMonday.Items.Clear();
+            lsTuesday.Items.Clear();
+            lsThursday.Items.Clear();
+            lsWednesday.Items.Clear();
+            lsFriday.Items.Clear();
+            tasks1.Clear();
+            tasks2.Clear();
+            tasks3.Clear();
+            tasks4.Clear();
+            tasks5.Clear();
+        }
         public void LoadWeek()
         {
-            switch (DateTime.Now.DayOfWeek) 
+            switch (day.DayOfWeek) 
             {
                 case DayOfWeek.Monday:
-                    week[0] = DateTime.Now.Date.ToString("dd");
-                    week[1] = DateTime.Now.AddDays(1).ToString("dd");
-                    week[2] = DateTime.Now.AddDays(2).ToString("dd");
-                    week[3] = DateTime.Now.AddDays(3).ToString("dd");
-                    week[4] = DateTime.Now.AddDays(4).ToString("dd");
+                    week[0] = day.Date.ToString("dd");
+                    week[1] = day.AddDays(1).ToString("dd");
+                    week[2] = day.AddDays(2).ToString("dd");
+                    week[3] = day.AddDays(3).ToString("dd");
+                    week[4] = day.AddDays(4).ToString("dd");
                     DrawDays();
                     DrawTasks();
                     break;
                 case DayOfWeek.Tuesday:
-                    week[0] = DateTime.Now.AddDays(-1).ToString("dd");
-                    week[1] = DateTime.Now.Date.ToString("dd");
-                    week[2] = DateTime.Now.AddDays(1).ToString("dd");
-                    week[3] = DateTime.Now.AddDays(2).ToString("dd");
-                    week[4] = DateTime.Now.AddDays(3).ToString("dd");
+                    week[0] = day.AddDays(-1).ToString("dd");
+                    week[1] = day.Date.ToString("dd");
+                    week[2] = day.AddDays(1).ToString("dd");
+                    week[3] = day.AddDays(2).ToString("dd");
+                    week[4] = day.AddDays(3).ToString("dd");
                     DrawDays();
                     DrawTasks();
                     break;
                 case DayOfWeek.Wednesday:
-                    week[0] = DateTime.Now.AddDays(-2).ToString("dd");
-                    week[1] = DateTime.Now.AddDays(-1).ToString("dd");
-                    week[2] = DateTime.Now.Date.ToString("dd");
-                    week[3] = DateTime.Now.AddDays(1).ToString("dd");
-                    week[4] = DateTime.Now.AddDays(2).ToString("dd");
+                    week[0] = day.AddDays(-2).ToString("dd");
+                    week[1] = day.AddDays(-1).ToString("dd");
+                    week[2] = day.Date.ToString("dd");
+                    week[3] = day.AddDays(1).ToString("dd");
+                    week[4] = day.AddDays(2).ToString("dd");
                     DrawDays();
                     DrawTasks();
                     break;
                 case DayOfWeek.Thursday:
-                    week[0] = DateTime.Now.AddDays(-3).ToString("dd");
-                    week[1] = DateTime.Now.AddDays(-2).ToString("dd");
-                    week[2] = DateTime.Now.AddDays(-1).ToString("dd");
-                    week[3] = DateTime.Now.Date.ToString("dd");
-                    week[4] = DateTime.Now.AddDays(1).ToString("dd");
+                    week[0] = day.AddDays(-3).ToString("dd");
+                    week[1] = day.AddDays(-2).ToString("dd");
+                    week[2] = day.AddDays(-1).ToString("dd");
+                    week[3] = day.Date.ToString("dd");
+                    week[4] = day.AddDays(1).ToString("dd");
                     DrawDays();
                     DrawTasks();
                     break;
                 case DayOfWeek.Friday:
-                    week[0] = DateTime.Now.AddDays(-4).ToString("dd");
-                    week[1] = DateTime.Now.AddDays(-3).ToString("dd");
-                    week[2] = DateTime.Now.AddDays(-2).ToString("dd");
-                    week[3] = DateTime.Now.AddDays(-1).ToString("dd");
-                    week[4] = DateTime.Now.Date.ToString("dd");
+                    week[0] = day.AddDays(-4).ToString("dd");
+                    week[1] = day.AddDays(-3).ToString("dd");
+                    week[2] = day.AddDays(-2).ToString("dd");
+                    week[3] = day.AddDays(-1).ToString("dd");
+                    week[4] = day.Date.ToString("dd");
                     DrawDays();
                     DrawTasks();
                     break;
                 case DayOfWeek.Saturday:
-                    week[0] = DateTime.Now.AddDays(-5).ToString("dd");
-                    week[1] = DateTime.Now.AddDays(-4).ToString("dd");
-                    week[2] = DateTime.Now.AddDays(-3).ToString("dd");
-                    week[3] = DateTime.Now.AddDays(-2).ToString("dd");
-                    week[4] = DateTime.Now.AddDays(-1).ToString("dd");
+                    week[0] = day.AddDays(-5).ToString("dd");
+                    week[1] = day.AddDays(-4).ToString("dd");
+                    week[2] = day.AddDays(-3).ToString("dd");
+                    week[3] = day.AddDays(-2).ToString("dd");
+                    week[4] = day.AddDays(-1).ToString("dd");
                     DrawDays();
                     DrawTasks();
                     break;
                 case DayOfWeek.Sunday:
-                    week[0] = DateTime.Now.AddDays(-6).ToString("dd");
-                    week[1] = DateTime.Now.AddDays(-5).ToString("dd");
-                    week[2] = DateTime.Now.AddDays(-4).ToString("dd");
-                    week[3] = DateTime.Now.AddDays(-3).ToString("dd");
-                    week[4] = DateTime.Now.AddDays(-2).ToString("dd");
+                    week[0] = day.AddDays(-6).ToString("dd");
+                    week[1] = day.AddDays(-5).ToString("dd");
+                    week[2] = day.AddDays(-4).ToString("dd");
+                    week[3] = day.AddDays(-3).ToString("dd");
+                    week[4] = day.AddDays(-2).ToString("dd");
                     DrawDays();
                     DrawTasks();
                     break;
@@ -201,13 +215,35 @@ namespace clientCrm
 
             using (HttpClient client = new HttpClient())
             {
-                string responce = await client.GetStringAsync(MainFunc.ip + "/tasks_forUS?user_id="+auth_user.id);
+                string responce = await client.GetStringAsync(MainFunc.ip + "/tasks_forUS?user_id="+MainFunc.auth_user.id);
                 tasks = MainFunc.taskListHandler(responce);
                 if (tasks == null)
                     MessageBox.Show("Ошибка");
                 else
                 {
                     LoadWeek();
+                }
+            }
+        }
+
+        private async void dtP_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (dtP.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday || dtP.SelectedDate.Value.DayOfWeek == DayOfWeek.Sunday)
+            {
+                MessageBox.Show("Вы выбрали выходной день! \n Пожалуйста выберете другой рабочий день.", "Ошибка!");
+                dtP.SelectedDate = DateTime.Now.Date;
+            }
+            else
+            {
+                try
+                {
+                    day = dtP.SelectedDate.Value;
+                    ClearLists();
+                    await GetTaskList();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
         }

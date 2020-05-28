@@ -9,11 +9,25 @@
       Title="TaskListPage" Loaded="Page_Loaded">
 
     <Grid>
-        <ListBox Name="lstCars" Margin="31,53,0,39" Background="#26CDB1F6" HorizontalAlignment="Left" Width="335">
-            <ListBoxItem Margin="3">
-                <StackPanel Orientation="Horizontal"/>
-            </ListBoxItem>
-
-        </ListBox>
+        <Label x:Name="lbUserInfo" Content="Общий список задач" Margin="10,0,0,0" Foreground="#FFECF4F5" Background="#00A3BFC5" FontSize="25" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="472" Height="45" VerticalAlignment="Top"/>
+        <ListBox x:Name="lsTasks" Margin="39,66,341,33" Background="#26CDB1F6" BorderBrush="White" FontFamily="Segoe UI Light" FontSize="20" SelectedIndex="0" Foreground="White" FontWeight="Bold"/>
+        <GroupBox Header="Настройки фильтрации" Height="255" Margin="0,57,10,0" VerticalAlignment="Top" Foreground="White" FontSize="25" FontFamily="Segoe UI Light" HorizontalAlignment="Right" Width="287">
+            <Grid HorizontalAlignment="Left" Height="231" Margin="4,7,0,0" VerticalAlignment="Top" Width="264">
+                <Button x:Name="btnUpdate" Content="Обновить" Margin="10,105,0,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" Click="btnUpdate_Click"/>
+                <CheckBox x:Name="chb1" Content="Не показывать выполненные задачи" Margin="10,10,28,0" VerticalAlignment="Top" Foreground="White" Height="29" FontSize="16" RenderTransformOrigin="0.5,0.5">
+                    <CheckBox.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleX="1"/>
+                            <SkewTransform/>
+                            <RotateTransform/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </CheckBox.RenderTransform>
+                </CheckBox>
+                <DatePicker x:Name="dtP" HorizontalAlignment="Left" Margin="12,44,0,0" VerticalAlignment="Top" Height="45" FontSize="16" Width="224"/>
+                <Button x:Name="btnReset" Content="Сбросить фильтры" Margin="0,152,12,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="19" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Height="38" VerticalAlignment="Top" Click="btnReset_Click" HorizontalAlignment="Right" Width="242"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="btnDeleteTask" Content="Удалить выбранную задачу" Margin="0,335,34,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="19" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Height="37" VerticalAlignment="Top" Click="btnDeleteTask_Click" HorizontalAlignment="Right" Width="242"/>
     </Grid>
 </Page>

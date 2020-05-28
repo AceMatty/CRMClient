@@ -28,30 +28,36 @@ namespace clientCrm
             userS = usC;
             InitializeComponent();
         }
-
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {
-            try
+            if (!String.IsNullOrEmpty(txtName.Text))
             {
-                await CreateTask();
+                try
+                {
+                    await CreateTask();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Введите название задачи", "Ошибка!");
+                txtName.Focus();
             }
-           
-
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
-
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             this.Title = "Создание задачи";
             lbUserInfo.Content = "Выбранный пользователь: \n" + userS.fio;
+            dateW.DisplayDateStart = dateW.DisplayDate;
+            dateW.SelectedDate = DateTime.Now.Date;
             if (slider.Value == 0)
             {
                 lbPr.Content = "Низкий приоритет \n(Задача выполняется при отсутствии \nзадач высокого и среднего приоритета.)";
@@ -93,6 +99,15 @@ namespace clientCrm
                 {
                     MessageBox.Show(responce);
                 }
+            }
+        }
+
+        private void dateW_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(dateW.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday || dateW.SelectedDate.Value.DayOfWeek == DayOfWeek.Sunday)
+            {
+                MessageBox.Show("Вы выбрали выходной день! \n Пожалуйста выберете другой рабочий день.","Ошибка!");
+                dateW.SelectedDate = DateTime.Now.Date;
             }
         }
     }

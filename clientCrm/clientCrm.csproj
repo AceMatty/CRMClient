@@ -68,6 +68,9 @@
     <Compile Include="DefForm.xaml.cs">
       <DependentUpon>DefForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EditTaskForm.xaml.cs">
+      <DependentUpon>EditTaskForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="JurnPage.xaml.cs">
       <DependentUpon>JurnPage.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DefForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditTaskForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

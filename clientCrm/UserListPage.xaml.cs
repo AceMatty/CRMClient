@@ -72,7 +72,7 @@ namespace clientCrm
         private void btnCreateTask_Click(object sender, RoutedEventArgs e)
         {
             User us = UsersList[usList.SelectedIndex];
-            CreateTaskForm form = new CreateTaskForm(MainFunc.auth_user, us);
+            CreateTaskForm form = new CreateTaskForm(us);
             form.ShowDialog();
         }
     }

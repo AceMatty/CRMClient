@@ -72,3 +72,5 @@ C:\Users\User\Documents\gitC#\CRMClient wpf\CRMClient\clientCrm\obj\Debug\client
 C:\Users\User\Documents\gitC#\CRMClient wpf\CRMClient\clientCrm\obj\Debug\clientCrm.csproj.CoreCompileInputs.cache
 C:\Users\User\Documents\gitC#\CRMClient wpf\CRMClient\clientCrm\obj\Debug\clientCrm.exe
 C:\Users\User\Documents\gitC#\CRMClient wpf\CRMClient\clientCrm\obj\Debug\clientCrm.pdb
+C:\Users\User\Documents\gitC#\CRMClient wpf\CRMClient\clientCrm\obj\Debug\EditTaskForm.g.cs
+C:\Users\User\Documents\gitC#\CRMClient wpf\CRMClient\clientCrm\obj\Debug\EditTaskForm.baml

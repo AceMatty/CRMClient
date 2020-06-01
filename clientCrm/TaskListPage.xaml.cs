@@ -68,11 +68,11 @@ namespace clientCrm
         {
             lsTasks.Items.Clear();
             curTasks.Clear();
-            if (chb1.IsChecked == true)
+            if (chb1.IsChecked == true && dtP.SelectedDate==null)
             {
                 foreach (task item in tasks)
                 {
-                    if (item.status == 0 && DateTime.Parse(item.time_work) == dtP.SelectedDate)
+                    if (item.status == 0)
                     {
                         string pr = "";
                         string st = "";
@@ -101,7 +101,11 @@ namespace clientCrm
                     }
                 }
             }
-            else
+            else if(chb1.IsChecked == false && dtP.SelectedDate == null)
+            {
+                UpdList();
+            }
+            else if (chb1.IsChecked == false && dtP.SelectedDate != null)
             {
                 foreach (task item in tasks)
                 {
@@ -171,6 +175,8 @@ namespace clientCrm
         private void btnReset_Click(object sender, RoutedEventArgs e)
         {
             UpdList();
+            chb1.IsChecked = false;
+            dtP.SelectedDate = null;
         }
         private async void btnDeleteTask_Click(object sender, RoutedEventArgs e)
         {
@@ -205,6 +211,26 @@ namespace clientCrm
                 MessageBox.Show(er.Message);
             }
            
+        }
+        private void btnEditTask_Click(object sender, RoutedEventArgs e)
+        {
+            if (lsTasks.SelectedIndex != -1)
+            {
+                if (curTasks[lsTasks.SelectedIndex].status != 1)
+                {
+                    EditTaskForm f = new EditTaskForm(curTasks[lsTasks.SelectedIndex], UsersList);
+                    f.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Данная задача уже выполнена!", "Ошибка");
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Выберете задачу для изменения!", "Ошибка");
+            }
         }
     }
 }

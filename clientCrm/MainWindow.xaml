@@ -16,7 +16,7 @@
 " Height="34" Grid.ColumnSpan="2" Background="#FF9F93E0" Foreground="White" FontFamily="Segoe UI Light" FontSize="20"/>
         <Label Content="Пароль" HorizontalAlignment="Left" Margin="10,216,0,0" VerticalAlignment="Top" Height="38" Width="242" Grid.ColumnSpan="2" FontSize="23" FontFamily="Segoe UI Light" Background="#00000000" Foreground="Snow"/>
         <Label x:Name="lbStatus" Content="Ver 28.05" HorizontalAlignment="Left" Margin="346,385,0,0" VerticalAlignment="Top" Width="136"/>
-        <Button x:Name="btnReg" Content="Регистрация" HorizontalAlignment="Left" Margin="326,329,0,0" VerticalAlignment="Top" Width="158" Height="34" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Click="btnReg_Click_1"/>
+        <Button x:Name="btnReg" Content="Регистрация" HorizontalAlignment="Right" Margin="0,329,10,0" VerticalAlignment="Top" Width="158" Height="34" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Click="btnReg_Click_1"/>
 
     </Grid>
 </Window>

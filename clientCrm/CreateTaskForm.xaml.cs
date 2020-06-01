@@ -20,11 +20,9 @@ namespace clientCrm
     /// </summary>
     public partial class CreateTaskForm : Window
     {
-        User auth_user = new User();
         User userS = new User();
-        public CreateTaskForm(User usA, User usC)
+        public CreateTaskForm( User usC)
         {
-            auth_user = usA;
             userS = usC;
             InitializeComponent();
         }
@@ -92,7 +90,7 @@ namespace clientCrm
                 string d1 = DateTime.Now.Date.Day + "." + DateTime.Now.Date.Month + "." + DateTime.Now.Date.Year;
                 string d2 = dateW.SelectedDate.Value.Date.Day + "." + dateW.SelectedDate.Value.Date.Month+"." + dateW.SelectedDate.Value.Date.Year;
                 string responce = await client.GetStringAsync(MainFunc.ip + "/create_task?name=" + txtName.Text + "&des=" + txtDesc.Text + "&timeC=" 
-                    +d1 +"&timeW=" +d2+ "&userF=" + auth_user.id + "&userT=" + userS.id + "&pr="+slider.Value+"&status=0");
+                    +d1 +"&timeW=" +d2+ "&userF=" + MainFunc.auth_user.id + "&userT=" + userS.id + "&pr="+slider.Value+"&status=0");
                 if (responce == null)
                     MessageBox.Show("Ошибка");
                 else
@@ -101,7 +99,6 @@ namespace clientCrm
                 }
             }
         }
-
         private void dateW_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if(dateW.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday || dateW.SelectedDate.Value.DayOfWeek == DayOfWeek.Sunday)

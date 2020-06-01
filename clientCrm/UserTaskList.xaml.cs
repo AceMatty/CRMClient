@@ -225,7 +225,6 @@ namespace clientCrm
                 }
             }
         }
-
         private async void dtP_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dtP.SelectedDate.Value.DayOfWeek == DayOfWeek.Saturday || dtP.SelectedDate.Value.DayOfWeek == DayOfWeek.Sunday)

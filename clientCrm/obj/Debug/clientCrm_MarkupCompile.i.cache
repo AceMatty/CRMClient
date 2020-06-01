@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\User\Documents\Projects C#\clientCrm\clientCrm\obj\Debug\
+C:\Users\User\Documents\gitC#\CRMClient wpf\CRMClient\clientCrm\obj\Debug\
 clientCrm
 none
 false
 DEBUG;TRACE
-C:\Users\User\Documents\Projects C#\clientCrm\clientCrm\App.xaml
-12-50305655
+C:\Users\User\Documents\gitC#\CRMClient wpf\CRMClient\clientCrm\App.xaml
+131820218710
 
-182021867817
+191557076994
 131254293103
-AcceptForm.xaml;AdminsForm.xaml;CreateTaskForm.xaml;DefForm.xaml;JurnPage.xaml;MainAdminPage.xaml;MainWindow.xaml;RegistrForm.xaml;TaskItem.xaml;TaskListPage.xaml;UserListPage.xaml;UserTaskList.xaml;
+AcceptForm.xaml;AdminsForm.xaml;CreateTaskForm.xaml;DefForm.xaml;EditTaskForm.xaml;JurnPage.xaml;MainAdminPage.xaml;MainWindow.xaml;RegistrForm.xaml;TaskItem.xaml;TaskListPage.xaml;UserListPage.xaml;UserTaskList.xaml;
 
 True
 

@@ -28,7 +28,7 @@
                 <Button x:Name="btnReset" Content="Сбросить фильтры" Margin="0,152,12,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="19" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Height="38" VerticalAlignment="Top" Click="btnReset_Click" HorizontalAlignment="Right" Width="242"/>
             </Grid>
         </GroupBox>
-        <Button x:Name="btnDeleteTask" Content="Удалить выбранную задачу" Margin="0,380,37,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="19" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Height="37" VerticalAlignment="Top" Click="btnDeleteTask_Click" HorizontalAlignment="Right" Width="242"/>
-        <Button x:Name="btnEditTask" Content="Изменить выбранную задачу" Margin="0,327,37,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="18" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Height="37" VerticalAlignment="Top" Click="btnEditTask_Click" HorizontalAlignment="Right" Width="242"/>
+        <Button x:Name="btnDeleteTask" Content="Удалить задачу" Margin="0,380,37,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="19" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Height="37" VerticalAlignment="Top" Click="btnDeleteTask_Click" HorizontalAlignment="Right" Width="242"/>
+        <Button x:Name="btnEditTask" Content="Редактировать задачу" Margin="0,327,37,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="18" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" Height="37" VerticalAlignment="Top" Click="btnEditTask_Click" HorizontalAlignment="Right" Width="242"/>
     </Grid>
 </Page>

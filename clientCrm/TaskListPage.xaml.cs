@@ -68,76 +68,85 @@ namespace clientCrm
         {
             lsTasks.Items.Clear();
             curTasks.Clear();
-            if (chb1.IsChecked == true && dtP.SelectedDate==null)
+            try
             {
-                foreach (task item in tasks)
+                if (chb1.IsChecked == true && dtP.SelectedDate == null)
                 {
-                    if (item.status == 0)
+                    foreach (task item in tasks)
                     {
-                        string pr = "";
-                        string st = "";
-                        if (item.status == 1)
-                            st = "Выполнено";
                         if (item.status == 0)
-                            st = "Не выполнено";
-                        switch (item.pr)
                         {
-                            case 0:
-                                pr = "Низкий";
-                                break;
-                            case 1:
-                                pr = "Средний";
-                                break;
-                            case 2:
-                                pr = "Высокий";
-                                break;
+                            string pr = "";
+                            string st = "";
+                            if (item.status == 1)
+                                st = "Выполнено";
+                            if (item.status == 0)
+                                st = "Не выполнено";
+                            switch (item.pr)
+                            {
+                                case 0:
+                                    pr = "Низкий";
+                                    break;
+                                case 1:
+                                    pr = "Средний";
+                                    break;
+                                case 2:
+                                    pr = "Высокий";
+                                    break;
+                            }
+                            ListBoxItem ls = new ListBoxItem();
+                            ls.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                            ls.Content = "Название: " + item.name + "\n Для кого: " + MainFunc.FindUser(item.userT, UsersList).login + " (" + MainFunc.FindUser(item.userT, UsersList).fio + ")" +
+                                "\n Дата для выполнения: " + item.time_work + "\n Приотритет: " + pr + "\n Статус: " + st;
+                            lsTasks.Items.Add(ls);
+                            curTasks.Add(item);
                         }
-                        ListBoxItem ls = new ListBoxItem();
-                        ls.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                        ls.Content = "Название: " + item.name + "\n Для кого: " + MainFunc.FindUser(item.userT, UsersList).login + " (" + MainFunc.FindUser(item.userT, UsersList).fio + ")" +
-                            "\n Дата для выполнения: " + item.time_work + "\n Приотритет: " + pr + "\n Статус: " + st;
-                        lsTasks.Items.Add(ls);
-                        curTasks.Add(item);
                     }
                 }
-            }
-            else if(chb1.IsChecked == false && dtP.SelectedDate == null)
-            {
-                UpdList();
-            }
-            else if (chb1.IsChecked == false && dtP.SelectedDate != null)
-            {
-                foreach (task item in tasks)
+                else if (chb1.IsChecked == false && dtP.SelectedDate == null)
                 {
-                    if (DateTime.Parse(item.time_work) == dtP.SelectedDate)
+                    UpdList();
+                }
+                else if (chb1.IsChecked == false && dtP.SelectedDate != null)
+                {
+                    foreach (task item in tasks)
                     {
-                        string pr = "";
-                        string st = "";
-                        if (item.status == 1)
-                            st = "Выполнено";
-                        if (item.status == 0)
-                            st = "Не выполнено";
-                        switch (item.pr)
+                        if (DateTime.Parse(item.time_work) == dtP.SelectedDate)
                         {
-                            case 0:
-                                pr = "Низкий";
-                                break;
-                            case 1:
-                                pr = "Средний";
-                                break;
-                            case 2:
-                                pr = "Высокий";
-                                break;
+                            string pr = "";
+                            string st = "";
+                            if (item.status == 1)
+                                st = "Выполнено";
+                            if (item.status == 0)
+                                st = "Не выполнено";
+                            switch (item.pr)
+                            {
+                                case 0:
+                                    pr = "Низкий";
+                                    break;
+                                case 1:
+                                    pr = "Средний";
+                                    break;
+                                case 2:
+                                    pr = "Высокий";
+                                    break;
+                            }
+                            ListBoxItem ls = new ListBoxItem();
+                            ls.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
+                            ls.Content = "Название: " + item.name + "\n Для кого: " + MainFunc.FindUser(item.userT, UsersList).login + " (" + MainFunc.FindUser(item.userT, UsersList).fio + ")" +
+                                "\n Дата для выполнения: " + item.time_work + "\n Приотритет: " + pr + "\n Статус: " + st;
+                            lsTasks.Items.Add(ls);
+                            curTasks.Add(item);
                         }
-                        ListBoxItem ls = new ListBoxItem();
-                        ls.BorderBrush = new SolidColorBrush(Color.FromRgb(255, 255, 255));
-                        ls.Content = "Название: " + item.name + "\n Для кого: " + MainFunc.FindUser(item.userT, UsersList).login + " (" + MainFunc.FindUser(item.userT, UsersList).fio + ")" +
-                            "\n Дата для выполнения: " + item.time_work + "\n Приотритет: " + pr + "\n Статус: " + st;
-                        lsTasks.Items.Add(ls);
-                        curTasks.Add(item);
                     }
                 }
+
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
         void UpdList()
         {

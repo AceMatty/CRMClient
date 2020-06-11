@@ -34,6 +34,10 @@ namespace clientCrm
                 {
                     await LoginRequest();
                 }
+                else
+                {
+                    MessageBox.Show("Введите данные, в необходимые поля.", "Ошибка");
+                }
             }
             catch(Exception ex)
             {
@@ -68,7 +72,7 @@ namespace clientCrm
             }
             else
             {
-                MessageBox.Show("ошибка, проверте правильность введенных данных!!!!");
+                MessageBox.Show("Проверьте правильность введенных данных.", "Ошибка");
             }
         }
         private void btnReg_Click(object sender, RoutedEventArgs e)

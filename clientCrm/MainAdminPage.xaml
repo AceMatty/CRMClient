@@ -20,7 +20,7 @@
                 </TransformGroup>
             </Calendar.LayoutTransform>
         </Calendar>
-        <TextBlock x:Name="lb1" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" Foreground="White" FontSize="30" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="546" Height="413" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lb1" Margin="10,10,0,0" TextWrapping="Wrap" Text="TextBlock" Foreground="#FFF1EBEB" FontSize="30" FontFamily="Segoe UI Light" HorizontalAlignment="Left" Width="546" Height="413" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

@@ -31,30 +31,37 @@ namespace clientCrm
             TaskSt = st;
             InitializeComponent();
         }
-
         private async void btn_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                await GetTaskList();
-                
+                AcceptForm form = new AcceptForm();
+                form.ShowDialog();
+                if (form.IsActive == false)
+                {
+                    if (form.isAccepted == true)
+                    {
+                        await CompleteTask();
+                        
+                    }
+                    else
+                    {
+                        
+                    }
+                }
             }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            
         }
-        public async Task GetTaskList()
+        public async Task CompleteTask()
         {
-
             using (HttpClient client = new HttpClient())
             {
                 string responce = await client.GetStringAsync(MainFunc.ip + "/complete_task?id=" + TaskId);
                 MessageBox.Show(responce);
                 MainFunc.mainForm.frm1.Content = new UserTaskList();
-
-
             }
         }
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

@@ -39,7 +39,7 @@ namespace clientCrm
     {
         public static User auth_user;
         public static DefForm mainForm;
-        public const string ip = "http://localhost:9000";//82.146.63.120
+        public const string ip = "http://82.146.63.120:9000";//82.146.63.120
         public static User userMsgHandler(string responce)
         {
             string typeMsg;

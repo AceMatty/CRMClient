@@ -12,18 +12,18 @@
             <RowDefinition Height="780*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Панель администратора" Margin="10" FontSize="40" FontFamily="Segoe UI Light" Background="#26CDAFF6" Foreground="Snow"/>
-        <GroupBox Header="Основные окна" HorizontalAlignment="Left" Height="450" Margin="10,14,0,0" VerticalAlignment="Top" Width="287" Foreground="White" FontSize="25" FontFamily="Segoe UI Light" Grid.Row="1">
+        <Label Content="Панель администратора" Margin="10" FontSize="40" FontFamily="Segoe UI Light" Background="#26E87ED9" Foreground="#FFD8D8E4"/>
+        <GroupBox Header="Основные окна" HorizontalAlignment="Left" Height="450" Margin="10,14,0,0" VerticalAlignment="Top" Width="287" Foreground="#FFE8E2E2" FontSize="25" FontFamily="Segoe UI Light" Grid.Row="1" BorderBrush="#FF7E7A7A">
             <Grid HorizontalAlignment="Left" Height="401" Margin="4,7,0,0" VerticalAlignment="Top" Width="264">
-                <Button x:Name="btnOpenJurn" Content="Журнал действий" Margin="10,128,0,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" Click="btnOpenJurn_Click"/>
-                <Button x:Name="btnOpenUsers" Content="Список пользователей" Margin="10,67,0,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" ClickMode="Press" OpacityMask="#FF7A6F6F" Click="btnOpenUsers_Click"/>
-                <Button x:Name="btnOpenTasks" Content="Список задач" Margin="10,185,0,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" Click="btnOpenTasks_Click"/>
-                <Button x:Name="btnOpenMain" Content="Главная" Margin="12,10,0,0" Background="#FFE87ED9" Foreground="White" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FFCDB1F6" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" ClickMode="Press" OpacityMask="#FF7A6F6F" Click="btnOpenMain_Click"/>
+                <Button x:Name="btnOpenJurn" Content="Журнал действий" Margin="10,128,0,0" Background="#FFE87ED9" Foreground="#FFE0E0E4" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FF68686A" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" Click="btnOpenJurn_Click"/>
+                <Button x:Name="btnOpenUsers" Content="Список пользователей" Margin="10,67,0,0" Background="#FFE87ED9" Foreground="#FFE0E0E4" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FF68686A" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" ClickMode="Press" OpacityMask="#FF7A6F6F" Click="btnOpenUsers_Click"/>
+                <Button x:Name="btnOpenTasks" Content="Список задач" Margin="10,185,0,0" Background="#FFE87ED9" Foreground="#FFE0E0E4" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FF68686A" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" Click="btnOpenTasks_Click"/>
+                <Button x:Name="btnOpenMain" Content="Главная" Margin="12,10,0,0" Background="#FFE87ED9" Foreground="#FFE0E0E4" FontFamily="Segoe UI Light" FontSize="20" BorderBrush="#FF68686A" AutomationProperties.HelpText="Вход в систему" HorizontalAlignment="Left" Width="242" Height="37" VerticalAlignment="Top" ClickMode="Press" OpacityMask="#FF7A6F6F" Click="btnOpenMain_Click"/>
             </Grid>
         </GroupBox>
-        <Label x:Name="lbUserInfo" Content="Вы вошли как:авав вавав" Margin="0,10,10,34" Foreground="#FFECF4F5" Background="#00A3BFC5" FontSize="25" FontFamily="Segoe UI Light" HorizontalAlignment="Right" Width="328"/>
+        <Label x:Name="lbUserInfo" Content="Вы вошли как:авав вавав" Margin="0,10,10,34" Foreground="#FFDADAE4" Background="#00A3BFC5" FontSize="25" FontFamily="Segoe UI Light" HorizontalAlignment="Right" Width="328"/>
         <Frame x:Name="frm1" Content="Frame" Margin="339,31,37,125" Grid.Row="1" BorderBrush="White" NavigationUIVisibility="Hidden"/>
-        <Button x:Name="btnLogout" Content="Выйти" Margin="0,55,37,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="117" Click="btnLogout_Click" Background="#00C0B8CD" Foreground="White" FontSize="16" FontFamily="Segoe UI Light"/>
+        <Button x:Name="btnLogout" Content="Выйти" Margin="0,55,37,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="117" Click="btnLogout_Click" Background="#FFE87ED9" Foreground="#FFDFDFEE" FontSize="16" FontFamily="Segoe UI Light"/>
 
     </Grid>
 </Window>

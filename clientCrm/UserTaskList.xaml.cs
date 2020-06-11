@@ -31,21 +31,40 @@ namespace clientCrm
         List<task> tasks4 = new List<task>();
         List<task> tasks5 = new List<task>();
         DateTime day;
+
+        public static List<User> UsersList;
         public UserTaskList()
         {
             InitializeComponent();
+        }
+        public async Task GetUserList()
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    string responce = await client.GetStringAsync(MainFunc.ip + "/user_list");
+                    UsersList = MainFunc.usersListHandler(responce);
+                }
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!");
+            }
+           
         }
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
-
                 day = DateTime.Now;
                 await GetTaskList();
+                
             }
             catch(Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message, "Ошибка!");
             }
         }
         void DrawDays()
@@ -64,7 +83,7 @@ namespace clientCrm
             TaskItem taskItem = new TaskItem(item.id, item.pr, item.status);
             taskItem.lbName.Text = item.name;
             ToolTip t = new ToolTip();
-            t.Content = "Описание: " + item.desc + "\nДата создания:" + item.time_cr + "\nСодатель:" + item.userF;
+            t.Content = "Описание: " + item.desc + "\nДата создания: " + item.time_cr + "\nСодатель: " + MainFunc.FindUser(item.userT, UsersList).fio;
             t.Background = new SolidColorBrush(Color.FromArgb(100, 50, 36, 130));
             t.FontSize = 18;
             t.Foreground = new SolidColorBrush(Color.FromRgb(255, 255, 255));
@@ -74,59 +93,65 @@ namespace clientCrm
         }
         void DrawTasks()
         {
-            foreach (task item in tasks)
+            try
             {
-                if (item.status != 1)
+                foreach (task item in tasks)
                 {
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[0] + "." + day.Month + "." + day.Year))
+                    if (item.status != 1)
                     {
-                        tasks1.Add(item);
+                        if (DateTime.Parse(item.time_work) == DateTime.Parse(week[0] + "." + day.Month + "." + day.Year))
+                        {
+                            tasks1.Add(item);
+                        }
+                        if (DateTime.Parse(item.time_work) == DateTime.Parse(week[1] + "." + day.Month + "." + day.Year))
+                        {
+                            tasks2.Add(item);
+                        }
+                        if (DateTime.Parse(item.time_work) == DateTime.Parse(week[2] + "." + day.Month + "." + day.Year))
+                        {
+                            tasks3.Add(item);
+                        }
+                        if (DateTime.Parse(item.time_work) == DateTime.Parse(week[3] + "." + day.Month + "." + day.Year))
+                        {
+                            tasks4.Add(item);
+                        }
+                        if (DateTime.Parse(item.time_work) == DateTime.Parse(week[4] + "." + day.Month + "." + day.Year))
+                        {
+                            tasks5.Add(item);
+                        }
                     }
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[1] + "." + day.Month + "." + day.Year))
-                    {
-                        tasks2.Add(item);
-                    }
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[2] + "." + day.Month + "." + day.Year))
-                    {
-                        tasks3.Add(item);
-                    }
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[3] + "." + day.Month + "." + day.Year))
-                    {
-                        tasks4.Add(item);
-                    }
-                    if (DateTime.Parse(item.time_work) == DateTime.Parse(week[4] + "." + day.Month + "." + day.Year))
-                    {
-                        tasks5.Add(item);
-                    }
-                }
-                
-            }
-            tasks1.Sort((a, b) => b.pr.CompareTo(a.pr));
-            tasks2.Sort((a, b) => b.pr.CompareTo(a.pr));
-            tasks3.Sort((a, b) => b.pr.CompareTo(a.pr));
-            tasks4.Sort((a, b) => b.pr.CompareTo(a.pr));
-            tasks5.Sort((a, b) => b.pr.CompareTo(a.pr));
-            foreach (task item in tasks1)
-            {
-                lsMonday.Items.Add(GetTaskItem(item));
-            }
-            foreach (task item in tasks2)
-            {
-                lsTuesday.Items.Add(GetTaskItem(item));
-            }
-            foreach (task item in tasks3)
-            {
-                lsWednesday.Items.Add(GetTaskItem(item));
-            }
-            foreach (task item in tasks4)
-            {
-                lsThursday.Items.Add(GetTaskItem(item));
-            }
-            foreach (task item in tasks5)
-            {
-                lsFriday.Items.Add(GetTaskItem(item));
-            }
 
+                }
+                tasks1.Sort((a, b) => b.pr.CompareTo(a.pr));
+                tasks2.Sort((a, b) => b.pr.CompareTo(a.pr));
+                tasks3.Sort((a, b) => b.pr.CompareTo(a.pr));
+                tasks4.Sort((a, b) => b.pr.CompareTo(a.pr));
+                tasks5.Sort((a, b) => b.pr.CompareTo(a.pr));
+                foreach (task item in tasks1)
+                {
+                    lsMonday.Items.Add(GetTaskItem(item));
+                }
+                foreach (task item in tasks2)
+                {
+                    lsTuesday.Items.Add(GetTaskItem(item));
+                }
+                foreach (task item in tasks3)
+                {
+                    lsWednesday.Items.Add(GetTaskItem(item));
+                }
+                foreach (task item in tasks4)
+                {
+                    lsThursday.Items.Add(GetTaskItem(item));
+                }
+                foreach (task item in tasks5)
+                {
+                    lsFriday.Items.Add(GetTaskItem(item));
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!");
+            }
         }
         void ClearLists()
         {
@@ -212,17 +237,24 @@ namespace clientCrm
         }
         public async Task GetTaskList()
         {
-
-            using (HttpClient client = new HttpClient())
+            try
             {
-                string responce = await client.GetStringAsync(MainFunc.ip + "/tasks_forUS?user_id="+MainFunc.auth_user.id);
-                tasks = MainFunc.taskListHandler(responce);
-                if (tasks == null)
-                    MessageBox.Show("Ошибка");
-                else
+                using (HttpClient client = new HttpClient())
                 {
-                    LoadWeek();
+                    string responce = await client.GetStringAsync(MainFunc.ip + "/tasks_forUS?user_id=" + MainFunc.auth_user.id);
+                    tasks = MainFunc.taskListHandler(responce);
+                    if (tasks == null)
+                        MessageBox.Show("Ошибка");
+                    else
+                    {
+                        await GetUserList();
+                        LoadWeek();
+                    }
                 }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!");
             }
         }
         private async void dtP_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -242,7 +274,7 @@ namespace clientCrm
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Ошибка!");
                 }
             }
         }

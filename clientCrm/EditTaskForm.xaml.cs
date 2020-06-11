@@ -61,21 +61,29 @@ namespace clientCrm
         }
         public async Task EditTask()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                if (txtDesc.Text == "")
-                    txtDesc.Text = " ";
-                string d1 = DateTime.Now.Date.Day + "." + DateTime.Now.Date.Month + "." + DateTime.Now.Date.Year;
-                string d2 = dateW.SelectedDate.Value.Date.Day + "." + dateW.SelectedDate.Value.Date.Month + "." + dateW.SelectedDate.Value.Date.Year;
-                string responce = await client.GetStringAsync(MainFunc.ip + "/edit_task?id="+task.id+"&name=" + txtName.Text + "&des=" + txtDesc.Text + "&timeC="
-                    + d1 + "&timeW=" + d2 + "&userF=" + MainFunc.auth_user.id + "&userT=" + task.userT + "&pr=" + slider.Value + "&status=0");
-                if (responce == null)
-                    MessageBox.Show("Ошибка");
-                else
+                using (HttpClient client = new HttpClient())
                 {
-                    MessageBox.Show(responce);
+                    if (txtDesc.Text == "")
+                        txtDesc.Text = " ";
+                    string d1 = DateTime.Now.Date.Day + "." + DateTime.Now.Date.Month + "." + DateTime.Now.Date.Year;
+                    string d2 = dateW.SelectedDate.Value.Date.Day + "." + dateW.SelectedDate.Value.Date.Month + "." + dateW.SelectedDate.Value.Date.Year;
+                    string responce = await client.GetStringAsync(MainFunc.ip + "/edit_task?id=" + task.id + "&name=" + txtName.Text + "&des=" + txtDesc.Text + "&timeC="
+                        + d1 + "&timeW=" + d2 + "&userF=" + MainFunc.auth_user.id + "&userT=" + task.userT + "&pr=" + slider.Value + "&status=0");
+                    if (responce == null)
+                        MessageBox.Show("Ошибка");
+                    else
+                    {
+                        MessageBox.Show(responce);
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!");
+            }
+            
         }
         private async void btnCreate_Click(object sender, RoutedEventArgs e)
         {

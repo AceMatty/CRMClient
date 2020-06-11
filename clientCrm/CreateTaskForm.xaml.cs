@@ -21,7 +21,7 @@ namespace clientCrm
     public partial class CreateTaskForm : Window
     {
         User userS = new User();
-        public CreateTaskForm( User usC)
+        public CreateTaskForm(User usC)
         {
             userS = usC;
             InitializeComponent();
@@ -36,7 +36,7 @@ namespace clientCrm
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show(ex.Message, "Ошибка!");
                 }
             }
             else
@@ -83,21 +83,29 @@ namespace clientCrm
         }
         public async Task CreateTask()
         {
-            using (HttpClient client = new HttpClient())
+            try
             {
-                if (txtDesc.Text == "")
-                    txtDesc.Text = " ";
-                string d1 = DateTime.Now.Date.Day + "." + DateTime.Now.Date.Month + "." + DateTime.Now.Date.Year;
-                string d2 = dateW.SelectedDate.Value.Date.Day + "." + dateW.SelectedDate.Value.Date.Month+"." + dateW.SelectedDate.Value.Date.Year;
-                string responce = await client.GetStringAsync(MainFunc.ip + "/create_task?name=" + txtName.Text + "&des=" + txtDesc.Text + "&timeC=" 
-                    +d1 +"&timeW=" +d2+ "&userF=" + MainFunc.auth_user.id + "&userT=" + userS.id + "&pr="+slider.Value+"&status=0");
-                if (responce == null)
-                    MessageBox.Show("Ошибка");
-                else
+                using (HttpClient client = new HttpClient())
                 {
-                    MessageBox.Show(responce);
+                    if (txtDesc.Text == "")
+                        txtDesc.Text = " ";
+                    string d1 = DateTime.Now.Date.Day + "." + DateTime.Now.Date.Month + "." + DateTime.Now.Date.Year;
+                    string d2 = dateW.SelectedDate.Value.Date.Day + "." + dateW.SelectedDate.Value.Date.Month + "." + dateW.SelectedDate.Value.Date.Year;
+                    string responce = await client.GetStringAsync(MainFunc.ip + "/create_task?name=" + txtName.Text + "&des=" + txtDesc.Text + "&timeC="
+                        + d1 + "&timeW=" + d2 + "&userF=" + MainFunc.auth_user.id + "&userT=" + userS.id + "&pr=" + slider.Value + "&status=0");
+                    if (responce == null)
+                        MessageBox.Show("Ошибка");
+                    else
+                    {
+                        MessageBox.Show(responce);
+                    }
                 }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка!");
+            }
+            
         }
         private void dateW_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
